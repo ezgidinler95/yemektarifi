@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Container} from "semantic-ui-react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import { Route } from "react-router-dom";
+import AnaYemekler from "./components/Pages/AnaYemakler";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <Header></Header>
+    <Container text style={{ marginTop: "7em" }}>
+      <Route path="/ana-yemekler" component={AnaYemekler}></Route>
+    </Container>
+    <Footer></Footer>
+  </div>
+);
 
 export default App;
