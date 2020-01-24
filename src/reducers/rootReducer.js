@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import anaYemekler from "./anaYemekler";
+import anaYemek from "./anaYemek";
 
 export default combineReducers({
-  anaYemekler
+  anaYemek
 });
