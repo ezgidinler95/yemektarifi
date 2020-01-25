@@ -23,11 +23,8 @@ export function addAnaYemek(anaYemek) {
 export function allAnaYemek() {
   return async dispatch => {
     await dispatch({
-      type: "ALL_ANA_YEMEK_PENDING",
-      payload: axios
-        .post(`${API_URL}/ana-yemek/all`,)
-        .then(result => result.data)
+      type: "ALL_ANA_YEMEK",
+      payload: axios.get(`${API_URL}/ana-yemek/all`).then(result => result.data)
     });
   };
 }
-

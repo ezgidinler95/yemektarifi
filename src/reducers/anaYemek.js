@@ -10,7 +10,8 @@ import {
 const initialState = {
   addAnaYemekResult: {},
   anaYemek: {},
-  anaYemekler: []
+  anaYemekler: [],
+  loading: false
 };
 
 export default (state = initialState, action) => {
@@ -31,16 +32,19 @@ export default (state = initialState, action) => {
 
     case ALL_ANA_YEMEK_PENDING:
       return {
+        loading: true,
         ...state
       };
     case ALL_ANA_YEMEK_FULFILLED:
       return {
         ...state,
-        ...action.payload.data
+        ...action.payload.data,
+        loading: false
       };
     case ALL_ANA_YEMEK_REJECTED:
       return {
-        ...state
+        ...state,
+        loading: false
       };
 
     default:
