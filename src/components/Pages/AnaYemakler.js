@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Icon, Image, Grid } from "semantic-ui-react";
+import { Card, Icon, Image, Grid, } from "semantic-ui-react";
 import { allAnaYemek } from "../../actions/anaYemek";
+import { API_ANA_YEMEK_IMAGE_URL } from "../../config/config";
 //import { HashLoader } from "react-spinners";
 
 class AnaYemekler extends Component {
@@ -21,16 +22,15 @@ class AnaYemekler extends Component {
               <Grid.Column>
                 <Card key={anaYemek._id}>
                   <Image
-                    src="/images/avatar/large/matthew.png"
+                    src={API_ANA_YEMEK_IMAGE_URL + anaYemek.files}
                     wrapped
                     ui={false}
                   />
                   <Card.Content>
                     <Card.Header>{anaYemek.adi}</Card.Header>
-                    <Card.Description>{anaYemek.tarifi}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
-                    <a href="/">
+                    <a href={"/tarif-detay/" + anaYemek._id}>
                       <Icon name="user" />
                       Tarife gitmek için Tıkla
                     </a>

@@ -9,6 +9,10 @@ export const ALL_ANA_YEMEK_PENDING = "ALL_ANA_YEMEK_PENDING";
 export const ALL_ANA_YEMEK_FULFILLED = "ALL_ANA_YEMEK_FULFILLED";
 export const ALL_ANA_YEMEK_REJECTED = "ALL_ANA_YEMEK_REJECTED";
 
+export const GET_YEMEK_PENDING = "GET_YEMEK_PENDING";
+export const GET_YEMEK_FULFILLED = "GET_YEMEK_FULFILLED";
+export const GET_YEMEK_REJECTED = "GET_YEMEK_REJECTED";
+
 export function addAnaYemek(anaYemek) {
   return async dispatch => {
     await dispatch({
@@ -25,6 +29,17 @@ export function allAnaYemek() {
     await dispatch({
       type: "ALL_ANA_YEMEK",
       payload: axios.get(`${API_URL}/ana-yemek/all`).then(result => result.data)
+    });
+  };
+}
+
+export function getYemek(anaYemek) {
+  return async dispatch => {
+    await dispatch({
+      type: "GET_YEMEK",
+      payload: axios
+        .get(`${API_URL}/ana-yemek/${anaYemek}`)
+        .then(result => result.data)
     });
   };
 }

@@ -7,14 +7,14 @@ export default class Header extends Component {
       <div>
         <Menu fixed="top" inverted>
           <Container>
-            <Menu.Item as="a" header>
-              Günün Menüsü
+            <Menu.Item as={Link} to="/login" header>
+              Yemek Ekle
             </Menu.Item>
-            <Menu.Item as={Link} to="/tarif-ara">
-              Tarif ara
-            </Menu.Item>
-            <Menu.Item as={Link} to="/ana-yemekler">
+            <Menu.Item as={Link} to="/">
               Ana Yemekler
+            </Menu.Item>
+            <Menu.Item as={Link} to="/gunun-menusu">
+              Günün Menüsü
             </Menu.Item>
             <Menu.Item as={Link} to="/tatlı">
               Tatlı
@@ -22,7 +22,6 @@ export default class Header extends Component {
             <Menu.Item as={Link} to="/kahvaltı">
               Kahvaltı
             </Menu.Item>
-
             <Dropdown item simple text="Dropdown">
               <Dropdown.Menu>
                 <Dropdown.Item>List Item</Dropdown.Item>
