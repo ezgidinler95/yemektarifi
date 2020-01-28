@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Image, List } from "semantic-ui-react";
 import { allAnaYemek, deleteYemek } from "../../../actions/anaYemek";
-import { API_ANA_YEMEK_IMAGE_URL } from "../../../config/config";
-//import UpdateForm from "./UpdateForm";
+import { API_ANA_YEMEK_IMAGE_URL, SITE_URL } from "../../../config/config";
 
 class UpdateAndDelete extends Component {
   state = {};
@@ -13,7 +12,6 @@ class UpdateAndDelete extends Component {
   }
 
   handleDeleteYemek = (event, id) => {
-    console.log("cok heyecanlı", id);
     this.props.deleteYemek(id);
     if (this.props.deleteYemekResult.code === 200) {
       alert("silme işlemi başarılı");
@@ -23,6 +21,10 @@ class UpdateAndDelete extends Component {
     this.props.allAnaYemek();
   };
 
+  handleInsertYemek = (event, id) => {
+    window.location.href = SITE_URL + "/yemek-ekle";
+  };
+
   render() {
     return (
       <div>
@@ -30,7 +32,9 @@ class UpdateAndDelete extends Component {
           {this.props.anaYemekler.map(anaYemek => (
             <List.Item key={anaYemek._id}>
               <List.Content floated="right">
-                <Button onClick={this.handleUpdateYemek}>GÜNCELLE</Button>
+                <a href={"/update/" + anaYemek._id} {...this.props}>
+                  GÜNCELLE
+                </a>
                 <Button onClick={this.handleDeleteYemek} id={anaYemek._id}>
                   SİL
                 </Button>
@@ -40,7 +44,9 @@ class UpdateAndDelete extends Component {
             </List.Item>
           ))}
         </List>
-        <Button fluid>YENİ EKLE</Button>
+        <Button fluid onClick={this.handleInsertYemek}>
+          YENİ EKLE
+        </Button>
       </div>
     );
   }

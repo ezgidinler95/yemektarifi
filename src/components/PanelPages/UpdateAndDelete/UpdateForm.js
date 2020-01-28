@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
+import { getYemek } from "../../../actions/anaYemek";
 
 class UpdateForm extends Component {
   state = {
@@ -12,7 +13,11 @@ class UpdateForm extends Component {
   };
 
   async UNSAFE_componentWillMount() {
-    //await this.props.allAnaYemek();
+    const {
+      match: { params }
+    } = this.props;
+    console.log(params._id);
+    await this.props.getYemek(params._id);
   }
 
   onChangeHandlerFiles = async event => {
@@ -112,6 +117,6 @@ const mapStateToProps = ({ anaYemekReducer }) => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { getYemek };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateForm);

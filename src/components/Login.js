@@ -19,7 +19,7 @@ class Login extends Component {
     };
     await this.props.userLogin(user);
     if (this.props.userResult.code === 200) {
-      window.location.href = SITE_URL + "/yemek-ekle";
+      window.location.href = SITE_URL + "/update-delete";
     } else {
       alert("ekleme işlemi başarısız!!!");
     }

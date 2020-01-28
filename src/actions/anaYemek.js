@@ -65,7 +65,6 @@ export function updateYemek(anaYemek) {
 
 export function deleteYemek(anaYemek) {
   return async dispatch => {
-    console.log(anaYemek, "action");
     await dispatch({
       type: "DELETE_YEMEK",
       payload: axios

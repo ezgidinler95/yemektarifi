@@ -9,6 +9,7 @@ import AnaYemekler from "./components/Pages/AnaYemakler";
 import Login from "./components/Login";
 import TarifDetay from "./components/Pages/TarifDetayi";
 import AddFood from "./components/PanelPages/AddFood";
+import UpdateForm from "./components/PanelPages/UpdateAndDelete/UpdateForm";
 import UpdateAndDelete from "./components/PanelPages/UpdateAndDelete/index";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/" component={AnaYemekler} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/yemek-ekle" component={AddFood} />
+          <Route exact path="/update/:_id" component={UpdateForm} />
           <Route exact path="/tarif-detay/:_id" component={TarifDetay} />
           <Route exact path="/update-delete" component={UpdateAndDelete} />
         </Container>
