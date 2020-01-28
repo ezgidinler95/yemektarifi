@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
-import { addAnaYemek } from "../../actions/anaYemek";
 
 class UpdateForm extends Component {
   state = {
@@ -113,6 +112,6 @@ const mapStateToProps = ({ anaYemekReducer }) => {
   };
 };
 
-const mapDispatchToProps = { addAnaYemek };
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateForm);

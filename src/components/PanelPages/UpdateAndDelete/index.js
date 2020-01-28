@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Image, List, Modal } from "semantic-ui-react";
+import { Button, Image, List } from "semantic-ui-react";
 import { allAnaYemek, deleteYemek } from "../../../actions/anaYemek";
 import { API_ANA_YEMEK_IMAGE_URL } from "../../../config/config";
+//import UpdateForm from "./UpdateForm";
 
 class UpdateAndDelete extends Component {
   state = {};
@@ -11,10 +12,16 @@ class UpdateAndDelete extends Component {
     await this.props.allAnaYemek();
   }
 
-  handleDeleteYemek = (event, rowData) => {
-    console.log("buraya geldi");
+  handleDeleteYemek = (event, id) => {
+    console.log("cok heyecanlı", id);
+    this.props.deleteYemek(id);
+    if (this.props.deleteYemekResult.code === 200) {
+      alert("silme işlemi başarılı");
+    } else {
+      alert("silme işleminde hata oluştu!!!!");
+    }
+    this.props.allAnaYemek();
   };
-
 
   render() {
     return (
@@ -23,16 +30,10 @@ class UpdateAndDelete extends Component {
           {this.props.anaYemekler.map(anaYemek => (
             <List.Item key={anaYemek._id}>
               <List.Content floated="right">
-                <Modal
-                  trigger={<Button>GÜNCELLE</Button>}
-                  header="Güncelle!"
-                  content="Call Benjamin regarding the reports."
-                  actions={[
-                    "Snooze",
-                    { key: "done", content: "Done", positive: true }
-                  ]}
-                />
-                <Button onClick={this.handleDeleteYemek}>SİL</Button>
+                <Button onClick={this.handleUpdateYemek}>GÜNCELLE</Button>
+                <Button onClick={this.handleDeleteYemek} id={anaYemek._id}>
+                  SİL
+                </Button>
               </List.Content>
               <Image avatar src={API_ANA_YEMEK_IMAGE_URL + anaYemek.files} />
               <List.Content>{anaYemek.adi}</List.Content>
