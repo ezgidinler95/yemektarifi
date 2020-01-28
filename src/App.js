@@ -8,7 +8,8 @@ import { Route } from "react-router-dom";
 import AnaYemekler from "./components/Pages/AnaYemakler";
 import Login from "./components/Login";
 import TarifDetay from "./components/Pages/TarifDetayi";
-import AddFood from "./components/AddFood";
+import AddFood from "./components/PanelPages/AddFood";
+import UpdateAndDelete from "./components/PanelPages/UpdateAndDelete/index";
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/yemek-ekle" component={AddFood} />
           <Route exact path="/tarif-detay/:_id" component={TarifDetay} />
+          <Route exact path="/update-delete" component={UpdateAndDelete} />
         </Container>
         <Footer></Footer>
       </div>

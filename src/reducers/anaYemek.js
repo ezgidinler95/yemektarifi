@@ -7,12 +7,20 @@ import {
   ALL_ANA_YEMEK_REJECTED,
   GET_YEMEK_PENDING,
   GET_YEMEK_FULFILLED,
-  GET_YEMEK_REJECTED
+  GET_YEMEK_REJECTED,
+  DELETE_YEMEK_PENDING,
+  DELETE_YEMEK_FULFILLED,
+  DELETE_YEMEK_REJECTED,
+  UPDATE_YEMEK_PENDING,
+  UPDATE_YEMEK_FULFILLED,
+  UPDATE_YEMEK_REJECTED
 } from "../actions/anaYemek";
 
 const initialState = {
   addAnaYemekResult: {},
   getYemekResult: {},
+  deleteYemekResult: {},
+  updateYemekResult: {},
   anaYemek: {},
   anaYemekler: [],
   loading: false
@@ -30,6 +38,32 @@ export default (state = initialState, action) => {
         addAnaYemekResult: action.payload
       };
     case ADD_ANA_YEMEK_REJECTED:
+      return {
+        ...state
+      };
+    case DELETE_YEMEK_PENDING:
+      return {
+        ...state
+      };
+    case DELETE_YEMEK_FULFILLED:
+      return {
+        ...state,
+        deleteYemekResult: action.payload
+      };
+    case DELETE_YEMEK_REJECTED:
+      return {
+        ...state
+      };
+    case UPDATE_YEMEK_PENDING:
+      return {
+        ...state
+      };
+    case UPDATE_YEMEK_FULFILLED:
+      return {
+        ...state,
+        updateYemekResult: action.payload
+      };
+    case UPDATE_YEMEK_REJECTED:
       return {
         ...state
       };

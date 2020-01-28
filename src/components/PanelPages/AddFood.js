@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
-import { addAnaYemek } from "../actions/anaYemek";
+import { addAnaYemek } from "../../actions/anaYemek";
 
 class AddFood extends Component {
   state = {

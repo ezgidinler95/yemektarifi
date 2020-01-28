@@ -13,6 +13,14 @@ export const GET_YEMEK_PENDING = "GET_YEMEK_PENDING";
 export const GET_YEMEK_FULFILLED = "GET_YEMEK_FULFILLED";
 export const GET_YEMEK_REJECTED = "GET_YEMEK_REJECTED";
 
+export const UPDATE_YEMEK_PENDING = "UPDATE_YEMEK_PENDING";
+export const UPDATE_YEMEK_FULFILLED = "UPDATE_YEMEK_FULFILLED";
+export const UPDATE_YEMEK_REJECTED = "UPDATE_YEMEK_REJECTED";
+
+export const DELETE_YEMEK_PENDING = "DELETE_YEMEK_PENDING";
+export const DELETE_YEMEK_FULFILLED = "DELETE_YEMEK_FULFILLED";
+export const DELETE_YEMEK_REJECTED = "DELETE_YEMEK_REJECTED";
+
 export function addAnaYemek(anaYemek) {
   return async dispatch => {
     await dispatch({
@@ -39,6 +47,30 @@ export function getYemek(anaYemek) {
       type: "GET_YEMEK",
       payload: axios
         .get(`${API_URL}/ana-yemek/${anaYemek}`)
+        .then(result => result.data)
+    });
+  };
+}
+
+export function updateYemek(anaYemek) {
+  return async dispatch => {
+    await dispatch({
+      type: "UPDATE_YEMEK",
+      payload: axios
+        .put(`${API_URL}/ana-yemek`, anaYemek)
+        .then(result => result.data)
+    });
+  };
+}
+
+export function deleteYemek(anaYemek) {
+  return async dispatch => {
+    await dispatch({
+      type: "DELETE_YEMEK",
+      payload: axios
+        .delete(`${API_URL}/ana-yemek`, {
+          data: { ...anaYemek }
+        })
         .then(result => result.data)
     });
   };
