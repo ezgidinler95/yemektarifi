@@ -5,6 +5,11 @@ import { getYemek, updateYemek } from "../../../actions/anaYemek";
 
 class UpdateForm extends Component {
   state = {
+    adi: "",
+    tarifi: "",
+    malzeme: "",
+    pismesüresi: "",
+    type: { value: "", text: "Yemek Tipi" },
     files: []
   };
 
@@ -52,10 +57,10 @@ class UpdateForm extends Component {
   handdleUpdateYemekSubmit = async (e, state) => {
     let anaYemek = new FormData();
     anaYemek.append("_id", e.target._id.value);
-    anaYemek.append("adi", e.target.adi.value);
-    anaYemek.append("tarifi", e.target.adi.value);
-    anaYemek.append("malzeme", e.target.adi.value);
-    anaYemek.append("pismesüresi", e.target.adi.value);
+    anaYemek.append("adi", this.state.adi);
+    anaYemek.append("tarifi", this.state.tarifi);
+    anaYemek.append("malzeme", this.state.malzeme);
+    anaYemek.append("pismesüresi", this.state.pismesüresi);
 
     if (state.files) {
       if (state.files.length > 0) {
