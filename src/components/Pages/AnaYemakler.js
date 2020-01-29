@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Icon, Image, Grid, } from "semantic-ui-react";
+import { Card, Icon, Image, Grid } from "semantic-ui-react";
 import { allAnaYemek } from "../../actions/anaYemek";
 import { API_ANA_YEMEK_IMAGE_URL } from "../../config/config";
 //import { HashLoader } from "react-spinners";

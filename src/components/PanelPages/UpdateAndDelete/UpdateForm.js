@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
-import { getYemek } from "../../../actions/anaYemek";
+import { getYemek, updateYemek } from "../../../actions/anaYemek";
 
 class UpdateForm extends Component {
   state = {
-    adi: "",
-    tarifi: "",
-    malzeme: "",
-    pismesüresi: "",
     files: []
   };
 
@@ -16,7 +12,6 @@ class UpdateForm extends Component {
     const {
       match: { params }
     } = this.props;
-    console.log(params._id);
     await this.props.getYemek(params._id);
   }
 
@@ -54,20 +49,57 @@ class UpdateForm extends Component {
     });
   };
 
+  handdleUpdateYemekSubmit = async (e, state) => {
+    let anaYemek = new FormData();
+    anaYemek.append("_id", e.target._id.value);
+    anaYemek.append("adi", e.target.adi.value);
+    anaYemek.append("tarifi", e.target.adi.value);
+    anaYemek.append("malzeme", e.target.adi.value);
+    anaYemek.append("pismesüresi", e.target.adi.value);
+
+    if (state.files) {
+      if (state.files.length > 0) {
+        for (var i = 0; i < state.files.length; i++) {
+          anaYemek.append("files", state.files[i]);
+        }
+      }
+    }
+
+    await this.props.updateYemek(anaYemek);
+    if (this.props.updateYemekResult.code === 200) {
+      alert("Güncelleme işlemi başarılı");
+    } else {
+      alert("Güncelleme işlemi yapılıken sorun oluştu!!!");
+    }
+  };
+
+  handleChangeInput = element => {
+    this.setState({
+      [element.target.name]: element.target.value
+    });
+  };
+
   render() {
     return (
       <div>
         <Form
           onSubmit={e => {
             e.preventDefault();
-            this.handdleAddYemekSubmit(e, this.state);
+            this.handdleUpdateYemekSubmit(e, this.state);
           }}
         >
           <Form.Field>
+            <input
+              name="_id"
+              type="hidden"
+              defaultValue={this.props.anaYemek._id}
+            />
+          </Form.Field>
+          <Form.Field>
             <label>Yemek Adı</label>
             <input
-              value={this.state.adi}
               name="adi"
+              defaultValue={this.props.anaYemek.adi}
               onChange={this.handleChangeInput}
               placeholder="Yemek Adı"
             />
@@ -75,7 +107,7 @@ class UpdateForm extends Component {
           <Form.Field>
             <label>Tarifi</label>
             <input
-              value={this.state.tarifi}
+              defaultValue={this.props.anaYemek.tarifi}
               name="tarifi"
               onChange={this.handleChangeInput}
               placeholder="Tarifi"
@@ -84,7 +116,7 @@ class UpdateForm extends Component {
           <Form.Field>
             <label>Kullanılacak Malzemeler</label>
             <input
-              value={this.state.malzeme}
+              defaultValue={this.props.anaYemek.malzeme}
               name="malzeme"
               onChange={this.handleChangeInput}
               placeholder="Kullanılacak Malzemeler"
@@ -93,7 +125,7 @@ class UpdateForm extends Component {
           <Form.Field>
             <label>Pişme Süresi</label>
             <input
-              value={this.state.pismesüresi}
+              defaultValue={this.props.anaYemek.pismesüresi}
               name="pismesüresi"
               onChange={this.handleChangeInput}
               placeholder="Pişme Süresi"
@@ -104,7 +136,7 @@ class UpdateForm extends Component {
             <br />
             <input type="file" onChange={this.onChangeHandlerFiles} />
           </Form.Field>
-          <Button type="submit">Ekle</Button>
+          <Button type="submit">Bilgileri Güncelle</Button>
         </Form>
       </div>
     );
@@ -117,6 +149,6 @@ const mapStateToProps = ({ anaYemekReducer }) => {
   };
 };
 
-const mapDispatchToProps = { getYemek };
+const mapDispatchToProps = { getYemek, updateYemek };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateForm);

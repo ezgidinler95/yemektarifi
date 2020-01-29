@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Dropdown } from "semantic-ui-react";
 import { addAnaYemek } from "../../actions/anaYemek";
 
 class AddFood extends Component {
@@ -9,6 +9,7 @@ class AddFood extends Component {
     tarifi: "",
     malzeme: "",
     pismesüresi: "",
+    type: { value: "", text: "Yemek Tipi" },
     files: []
   };
 
@@ -116,6 +117,20 @@ class AddFood extends Component {
               name="pismesüresi"
               onChange={this.handleChangeInput}
               placeholder="Pişme Süresi"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Yemek Tipi</label>
+            <Dropdown
+              placeholder="Yemek Tipi"
+              fluid
+              search
+              selection
+              options={[
+                { key: 0, value: 0, text: "Ana Yemek" },
+                { key: 1, value: 1, text: "Kahvaltılık" },
+                { key: 2, value: 2, text: "Tatlı" }
+              ]}
             />
           </Form.Field>
           <Form.Field>
