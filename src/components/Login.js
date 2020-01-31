@@ -21,7 +21,7 @@ class Login extends Component {
     if (this.props.userResult.code === 200) {
       window.location.href = SITE_URL + "/update-delete";
     } else {
-      alert("ekleme işlemi başarısız!!!");
+      alert("hatalı bilgi girişi. İşlem başarısız!!!");
     }
   };
 
@@ -33,17 +33,23 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="arkafon">
         <Form
           onSubmit={e => {
             e.preventDefault();
             this.handdleLoginSubmit(e, this.state);
           }}
         >
-          <h1>HOŞGELDİNİZ</h1>
-          <h2>Kullanıcı adı ve şifreniz ile giriş yapabilirsiniz :) </h2>
+          <h1 style={{ textAlign: "center" }}>HOŞGELDİNİZ</h1>
+          <h2 style={{ textAlign: "center" }}>
+            Kullanıcı adı ve şifreniz ile giriş yapabilirsiniz :){" "}
+          </h2>
           <Form.Field>
-            <label>Kullanıcı Adı</label>
+            <label
+              style={{ textAlign: "center", color: "red", fontSize: "25px" }}
+            >
+              Kullanıcı Adı
+            </label>
             <input
               value={this.state.email}
               name="email"
@@ -52,7 +58,11 @@ class Login extends Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Şifre</label>
+            <label
+              style={{ textAlign: "center", color: "red", fontSize: "25px" }}
+            >
+              Şifre
+            </label>
             <input
               value={this.state.password}
               name="password"
@@ -60,7 +70,10 @@ class Login extends Component {
               placeholder="password"
             />
           </Form.Field>
-          <Button type="submit">Ekle</Button>
+          <br></br>
+          <Button fluid type="submit">
+            GİRİŞ YAP
+          </Button>
         </Form>
       </div>
     );

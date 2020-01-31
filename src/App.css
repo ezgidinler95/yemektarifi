@@ -27,6 +27,11 @@
 .App-link {
   color: #61dafb;
 }
+.arkafon {
+  background-image: url("image/resim.jpg");
+  background-size: cover;
+  height: 944px;
+}
 
 @keyframes App-logo-spin {
   from {
