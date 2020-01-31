@@ -64,7 +64,7 @@ class TarifDetayi extends Component {
                     PİŞME SÜRESİ VE DİKKAT EDİLMESİ GEREKENLER
                   </Header>
                   <p style={{ fontSize: "1.33em" }}>
-                    {this.props.anaYemek.pismesüresi} dk Daha lezzetli olması
+                    {this.props.anaYemek.pismesüresi} dk  Daha lezzetli olması
                     için annenize yaptırınız :D
                   </p>
                 </Grid.Column>

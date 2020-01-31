@@ -32,9 +32,7 @@ class UpdateAndDelete extends Component {
           {this.props.anaYemekler.map(anaYemek => (
             <List.Item key={anaYemek._id}>
               <List.Content floated="right">
-                <a href={"/update/" + anaYemek._id} {...this.props}>
-                  GÜNCELLE
-                </a>
+                <a href={"/update/" + anaYemek._id}>GÜNCELLE</a>
                 <Button onClick={this.handleDeleteYemek} id={anaYemek._id}>
                   SİL
                 </Button>

@@ -15,11 +15,13 @@ class AnaYemekler extends Component {
   render() {
     return (
       <div>
-        <h1>En Güzel Yemek Tarifleri</h1>
+        <h1 style={{ textAlign: "center", margin: "25px" }}>
+          EN GÜZEL YEMEK TARİFLERİ
+        </h1>
         <Grid columns={3} divided>
           <Grid.Row>
             {this.props.anaYemekler.map(anaYemek => (
-              <Grid.Column>
+              <Grid.Column key={anaYemek._id}>
                 <Card key={anaYemek._id}>
                   <Image
                     src={API_ANA_YEMEK_IMAGE_URL + anaYemek.files}
