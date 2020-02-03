@@ -21,6 +21,14 @@ export const DELETE_YEMEK_PENDING = "DELETE_YEMEK_PENDING";
 export const DELETE_YEMEK_FULFILLED = "DELETE_YEMEK_FULFILLED";
 export const DELETE_YEMEK_REJECTED = "DELETE_YEMEK_REJECTED";
 
+export const ALL_TATLI_PENDING = "ALL_TATLI_PENDING";
+export const ALL_TATLI_FULFILLED = "ALL_TATLI_FULFILLED";
+export const ALL_TATLI_REJECTED = "ALL_TATLI_REJECTED";
+
+export const ALL_KAHVALTILIK_PENDING = "ALL_KAHVALTILIK_PENDING";
+export const ALL_KAHVALTILIK_FULFILLED = "ALL_KAHVALTILIK_FULFILLED";
+export const ALL_KAHVALTILIK_REJECTED = "ALL_KAHVALTILIK_REJECTED";
+
 export function addAnaYemek(anaYemek) {
   return async dispatch => {
     await dispatch({
@@ -37,6 +45,28 @@ export function allAnaYemek() {
     await dispatch({
       type: "ALL_ANA_YEMEK",
       payload: axios.get(`${API_URL}/ana-yemek/all`).then(result => result.data)
+    });
+  };
+}
+
+export function allTatli() {
+  return async dispatch => {
+    await dispatch({
+      type: "ALL_TATLI",
+      payload: axios
+        .get(`${API_URL}/ana-yemek/tatli`)
+        .then(result => result.data)
+    });
+  };
+}
+
+export function allKahvaltilik() {
+  return async dispatch => {
+    await dispatch({
+      type: "ALL_KAHVALTILIK",
+      payload: axios
+        .get(`${API_URL}/ana-yemek/kahvaltilik`)
+        .then(result => result.data)
     });
   };
 }

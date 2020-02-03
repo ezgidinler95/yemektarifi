@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
 import { getYemek, updateYemek } from "../../../actions/anaYemek";
+import SearchSelect from "react-select";
 
 class UpdateForm extends Component {
   state = {
@@ -9,7 +10,7 @@ class UpdateForm extends Component {
     tarifi: "",
     malzeme: "",
     pismesüresi: "",
-    type: { value: "", text: "Yemek Tipi" },
+    type: { value: "", label: "tipi seç" },
     files: []
   };
 
@@ -61,6 +62,7 @@ class UpdateForm extends Component {
     anaYemek.append("tarifi", this.state.tarifi);
     anaYemek.append("malzeme", this.state.malzeme);
     anaYemek.append("pismesüresi", this.state.pismesüresi);
+    anaYemek.append("type", state.type.value);
 
     if (state.files) {
       if (state.files.length > 0) {
@@ -82,6 +84,10 @@ class UpdateForm extends Component {
     this.setState({
       [element.target.name]: element.target.value
     });
+  };
+
+  handleChangeType = async type => {
+    this.setState({ type });
   };
 
   render() {
@@ -134,6 +140,18 @@ class UpdateForm extends Component {
               name="pismesüresi"
               onChange={this.handleChangeInput}
               placeholder="Pişme Süresi"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="type">Yemek Tipi</label>
+            <SearchSelect
+              value={this.state.type}
+              onChange={this.handleChangeType}
+              options={[
+                { value: 0, label: "Ana Yemek" },
+                { value: 1, label: "Kahvaltılık" },
+                { value: 2, label: "Tatlı" }
+              ]}
             />
           </Form.Field>
           <Form.Field>

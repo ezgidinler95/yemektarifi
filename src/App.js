@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { Route } from "react-router-dom";
 import AnaYemekler from "./components/Pages/AnaYemakler";
+import Tatlı from "./components/Pages/Tatlı";
+import Kahvalti from "./components/Pages/Kahvalti";
 import Login from "./components/Login";
 import TarifDetay from "./components/Pages/TarifDetayi";
 import AddFood from "./components/PanelPages/AddFood";
@@ -19,6 +21,8 @@ class App extends Component {
         <Header></Header>
         <Container text style={{ marginTop: "7em" }}>
           <Route exact path="/" component={AnaYemekler} />
+          <Route exact path="/tatli" component={Tatlı} />
+          <Route exact path="/kahvalti" component={Kahvalti} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/yemek-ekle" component={AddFood} />
           <Route exact path="/update/:_id" component={UpdateForm} />

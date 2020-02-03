@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Form, Dropdown } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import { addAnaYemek } from "../../actions/anaYemek";
+import SearchSelect from "react-select";
 
 class AddFood extends Component {
   state = {
@@ -9,7 +10,7 @@ class AddFood extends Component {
     tarifi: "",
     malzeme: "",
     pismesüresi: "",
-    type: { value: "", text: "Yemek Tipi" },
+    type: { value: "", label: "tipi seç" },
     files: []
   };
 
@@ -51,6 +52,7 @@ class AddFood extends Component {
     anaYemek.append("tarifi", this.state.tarifi);
     anaYemek.append("malzeme", this.state.malzeme);
     anaYemek.append("pismesüresi", this.state.pismesüresi);
+    anaYemek.append("type", state.type.value);
 
     if (state.files) {
       if (state.files.length > 0) {
@@ -69,9 +71,11 @@ class AddFood extends Component {
   };
 
   handleChangeInput = element => {
-    this.setState({
-      [element.target.name]: element.target.value
-    });
+    this.setState({ [element.target.name]: element.target.value });
+  };
+
+  handleChangeType = async type => {
+    this.setState({ type });
   };
 
   render() {
@@ -119,20 +123,20 @@ class AddFood extends Component {
               placeholder="Pişme Süresi"
             />
           </Form.Field>
+
           <Form.Field>
-            <label>Yemek Tipi</label>
-            <Dropdown
-              placeholder="Yemek Tipi"
-              fluid
-              search
-              selection
+            <label htmlFor="type">Yemek Tipi</label>
+            <SearchSelect
+              value={this.state.type}
+              onChange={this.handleChangeType}
               options={[
-                { key: 0, value: 0, text: "Ana Yemek" },
-                { key: 1, value: 1, text: "Kahvaltılık" },
-                { key: 2, value: 2, text: "Tatlı" }
+                { value: 0, label: "Ana Yemek" },
+                { value: 1, label: "Kahvaltılık" },
+                { value: 2, label: "Tatlı" }
               ]}
             />
           </Form.Field>
+
           <Form.Field>
             <label>Görsel Ekleyiniz</label>
             <br />

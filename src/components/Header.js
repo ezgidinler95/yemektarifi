@@ -16,10 +16,10 @@ export default class Header extends Component {
             <Menu.Item as={Link} to="/gunun-menusu">
               Günün Menüsü
             </Menu.Item>
-            <Menu.Item as={Link} to="/tatlı">
+            <Menu.Item as={Link} to="/tatli">
               Tatlı
             </Menu.Item>
-            <Menu.Item as={Link} to="/kahvaltı">
+            <Menu.Item as={Link} to="/kahvalti">
               Kahvaltı
             </Menu.Item>
             <Dropdown item simple text="Dropdown">

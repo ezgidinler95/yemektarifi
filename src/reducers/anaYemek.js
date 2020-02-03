@@ -13,7 +13,10 @@ import {
   DELETE_YEMEK_REJECTED,
   UPDATE_YEMEK_PENDING,
   UPDATE_YEMEK_FULFILLED,
-  UPDATE_YEMEK_REJECTED
+  UPDATE_YEMEK_REJECTED,
+  ALL_TATLI_PENDING,
+  ALL_TATLI_FULFILLED,
+  ALL_TATLI_REJECTED
 } from "../actions/anaYemek";
 
 const initialState = {
@@ -95,6 +98,22 @@ export default (state = initialState, action) => {
         loading: false
       };
     case ALL_ANA_YEMEK_REJECTED:
+      return {
+        ...state,
+        loading: false
+      };
+    case ALL_TATLI_PENDING:
+      return {
+        loading: true,
+        ...state
+      };
+    case ALL_TATLI_FULFILLED:
+      return {
+        ...state,
+        ...action.payload.data,
+        loading: false
+      };
+    case ALL_TATLI_REJECTED:
       return {
         ...state,
         loading: false
