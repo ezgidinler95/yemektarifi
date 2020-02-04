@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 import AnaYemekler from "./components/Pages/AnaYemakler";
 import Tatlı from "./components/Pages/Tatlı";
 import Kahvalti from "./components/Pages/Kahvalti";
+import GununMenusu from "./components/Pages/GununMenusu";
 import Login from "./components/Login";
 import TarifDetay from "./components/Pages/TarifDetayi";
 import AddFood from "./components/PanelPages/AddFood";
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/" component={AnaYemekler} />
           <Route exact path="/tatli" component={Tatlı} />
           <Route exact path="/kahvalti" component={Kahvalti} />
+          <Route exact path="/gunun-menusu" component={GununMenusu} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/yemek-ekle" component={AddFood} />
           <Route exact path="/update/:_id" component={UpdateForm} />

@@ -8,26 +8,26 @@ export default class Header extends Component {
         <Menu fixed="top" inverted>
           <Container>
             <Menu.Item as={Link} to="/login" header>
-              Yemek Ekle
+              İŞLEMLER
             </Menu.Item>
             <Menu.Item as={Link} to="/">
-              Ana Yemekler
-            </Menu.Item>
-            <Menu.Item as={Link} to="/gunun-menusu">
-              Günün Menüsü
-            </Menu.Item>
-            <Menu.Item as={Link} to="/tatli">
-              Tatlı
+              BÜTÜN TARİFLER
             </Menu.Item>
             <Menu.Item as={Link} to="/kahvalti">
-              Kahvaltı
+              KAHVALTI
             </Menu.Item>
-            <Dropdown item simple text="Dropdown">
+            <Menu.Item as={Link} to="/tatli">
+              TATLI
+            </Menu.Item>
+            <Menu.Item as={Link} to="/gunun-menusu">
+              GÜNÜN MENÜSÜ
+            </Menu.Item>
+            <Dropdown item simple text="DİĞER">
               <Dropdown.Menu>
-                <Dropdown.Item>List Item</Dropdown.Item>
-                <Dropdown.Item>List Item</Dropdown.Item>
+                <Dropdown.Item>İletişim</Dropdown.Item>
+                <Dropdown.Item>Hakkımızda</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Header>Header Item</Dropdown.Header>
+                <Dropdown.Header>Öneriler</Dropdown.Header>
                 <Dropdown.Item>
                   <i className="dropdown icon" />
                   <span className="text">Submenu</span>

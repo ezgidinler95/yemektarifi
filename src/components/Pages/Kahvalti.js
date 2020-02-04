@@ -12,7 +12,6 @@ class Kahvalti extends Component {
   }
 
   render() {
-    console.log(this.props.anaYemekler);
     return (
       <div>
         <h1 style={{ textAlign: "center", margin: "25px" }}>
