@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Icon, Image, Grid } from "semantic-ui-react";
+import { Card, Icon, Image, Grid, Pagination } from "semantic-ui-react";
 import { allAnaYemek } from "../../actions/anaYemek";
 import { API_ANA_YEMEK_IMAGE_URL } from "../../config/config";
 //import { HashLoader } from "react-spinners";
@@ -42,6 +42,16 @@ class AnaYemekler extends Component {
             ))}
           </Grid.Row>
         </Grid>
+        <br></br>
+        <Pagination
+          boundaryRange={0}
+          defaultActivePage={1}
+          ellipsisItem={null}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={2}
+          totalPages={10}
+        />
       </div>
     );
   }

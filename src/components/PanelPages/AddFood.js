@@ -10,13 +10,12 @@ class AddFood extends Component {
     tarifi: "",
     malzeme: "",
     pismesüresi: "",
+    tarih: "",
     type: { value: "", label: "tipi seç" },
     files: []
   };
 
-  async UNSAFE_componentWillMount() {
-    //await this.props.allAnaYemek();
-  }
+  async UNSAFE_componentWillMount() {}
 
   onChangeHandlerFiles = async event => {
     if (event.target.files.length > 0) {
@@ -53,6 +52,7 @@ class AddFood extends Component {
     anaYemek.append("malzeme", this.state.malzeme);
     anaYemek.append("pismesüresi", this.state.pismesüresi);
     anaYemek.append("type", state.type.value);
+    anaYemek.append("tarih", this.state.tarih);
 
     if (state.files) {
       if (state.files.length > 0) {
@@ -123,7 +123,6 @@ class AddFood extends Component {
               placeholder="Pişme Süresi"
             />
           </Form.Field>
-
           <Form.Field>
             <label htmlFor="type">Yemek Tipi</label>
             <SearchSelect
@@ -132,11 +131,20 @@ class AddFood extends Component {
               options={[
                 { value: 0, label: "Ana Yemek" },
                 { value: 1, label: "Kahvaltılık" },
-                { value: 2, label: "Tatlı" }
+                { value: 2, label: "Tatlı" },
+                { value: 3, label: "Çorba" }
               ]}
             />
           </Form.Field>
-
+          <Form.Field>
+            <label>Tarih Ekle</label>
+            <input
+              value={this.state.tarih}
+              name="tarih"
+              onChange={this.handleChangeInput}
+              placeholder="Tarih Ekle"
+            />
+          </Form.Field>
           <Form.Field>
             <label>Görsel Ekleyiniz</label>
             <br />

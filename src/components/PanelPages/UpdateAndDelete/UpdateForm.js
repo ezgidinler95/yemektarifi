@@ -10,6 +10,7 @@ class UpdateForm extends Component {
     tarifi: "",
     malzeme: "",
     pismesüresi: "",
+    tarih: "",
     type: { value: "", label: "tipi seç" },
     files: []
   };
@@ -63,6 +64,7 @@ class UpdateForm extends Component {
     anaYemek.append("malzeme", this.state.malzeme);
     anaYemek.append("pismesüresi", this.state.pismesüresi);
     anaYemek.append("type", state.type.value);
+    anaYemek.append("tarih", this.state.tarih);
 
     if (state.files) {
       if (state.files.length > 0) {
@@ -150,8 +152,18 @@ class UpdateForm extends Component {
               options={[
                 { value: 0, label: "Ana Yemek" },
                 { value: 1, label: "Kahvaltılık" },
-                { value: 2, label: "Tatlı" }
+                { value: 2, label: "Tatlı" },
+                { value: 3, label: "Çorba" }
               ]}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Tarih Ekle</label>
+            <input
+              defaultValue={this.props.anaYemek.tarih}
+              name="tarih"
+              onChange={this.handleChangeInput}
+              placeholder="Tarih Ekle"
             />
           </Form.Field>
           <Form.Field>

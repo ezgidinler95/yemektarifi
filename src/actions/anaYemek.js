@@ -29,6 +29,10 @@ export const ALL_KAHVALTILIK_PENDING = "ALL_KAHVALTILIK_PENDING";
 export const ALL_KAHVALTILIK_FULFILLED = "ALL_KAHVALTILIK_FULFILLED";
 export const ALL_KAHVALTILIK_REJECTED = "ALL_KAHVALTILIK_REJECTED";
 
+export const GET_GUNUN_MENUSU_PENDING = "GET_GUNUN_MENUSU_PENDING";
+export const GET_GUNUN_MENUSU_FULFILLED = "GET_GUNUN_MENUSU_FULFILLED";
+export const GET_GUNUN_MENUSU_REJECTED = "GET_GUNUN_MENUSU_REJECTED";
+
 export function addAnaYemek(anaYemek) {
   return async dispatch => {
     await dispatch({
@@ -99,6 +103,17 @@ export function deleteYemek(anaYemek) {
       type: "DELETE_YEMEK",
       payload: axios
         .delete(`${API_URL}/ana-yemek`, { data: { ...anaYemek } })
+        .then(result => result.data)
+    });
+  };
+}
+
+export function getGununMenusu() {
+  return async dispatch => {
+    await dispatch({
+      type: "GET_GUNUN_MENUSU",
+      payload: axios
+        .get(`${API_URL}/ana-yemek/gunun-menusu`)
         .then(result => result.data)
     });
   };

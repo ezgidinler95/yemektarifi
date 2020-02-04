@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { allKahvaltilik } from "../../actions/anaYemek";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Image,
-  Segment
-} from "semantic-ui-react";
+import { getGununMenusu } from "../../actions/anaYemek";
+import { Card, Icon, Image, Grid } from "semantic-ui-react";
+import { Container, Header } from "semantic-ui-react";
+import { API_ANA_YEMEK_IMAGE_URL } from "../../config/config";
 
 class Kahvalti extends Component {
   state = {};
 
-  async UNSAFE_componentWillMount() {}
+  async UNSAFE_componentWillMount() {
+    await this.props.getGununMenusu();
+  }
 
   render() {
     return (
@@ -24,60 +20,29 @@ class Kahvalti extends Component {
           <Header as="h2" dividing>
             Menu
           </Header>
-
-          <Grid columns={3} doubling>
-          
-              asdhjsdghsjdfskdfkdsfjdsfjdfdj
-
-          </Grid>
-
-          <Header as="h2" dividing>
-            
-          </Header>
-
-          <Grid columns="equal">
-            <Grid.Column>
-             
-
-              <Divider />
-
-            
-              <Divider />
-
-
-              <Divider />
-
-
-              <Divider />
-
-             
-
-              <Divider />
-
-              <Divider />
-
-              <Button.Group attached="top" widths={2}>
-               
-              </Button.Group>
-              <Segment attached>
-                <Image src="/images/wireframe/paragraph.png" />
-              </Segment>
-              <Button.Group attached="bottom" widths={2}>
-                <Button>One</Button>
-                <Button>Two</Button>
-              </Button.Group>
-            </Grid.Column>
-
-            <Grid.Column>
-             
-
-              <Divider />
-
-            
-              <Divider />
-
-            
-            </Grid.Column>
+          <Grid columns={3} divided>
+            <Grid.Row>
+              {this.props.anaYemekler.map(anaYemek => (
+                <Grid.Column key={anaYemek._id}>
+                  <Card key={anaYemek._id}>
+                    <Image
+                      src={API_ANA_YEMEK_IMAGE_URL + anaYemek.files}
+                      wrapped
+                      ui={false}
+                    />
+                    <Card.Content>
+                      <Card.Header>{anaYemek.adi}</Card.Header>
+                    </Card.Content>
+                    <Card.Content extra>
+                      <a href={"/tarif-detay/" + anaYemek._id}>
+                        <Icon name="user" />
+                        Tarife gitmek için Tıkla
+                      </a>
+                    </Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))}
+            </Grid.Row>
           </Grid>
         </Container>
       </div>
@@ -92,7 +57,7 @@ const mapStateToProps = ({ anaYemekReducer }) => {
 };
 
 const mapDispatchToProps = {
-  allKahvaltilik
+  getGununMenusu
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Kahvalti);

@@ -19,7 +19,10 @@ import {
   ALL_TATLI_REJECTED,
   ALL_KAHVALTILIK_PENDING,
   ALL_KAHVALTILIK_FULFILLED,
-  ALL_KAHVALTILIK_REJECTED
+  ALL_KAHVALTILIK_REJECTED,
+  GET_GUNUN_MENUSU_PENDING,
+  GET_GUNUN_MENUSU_FULFILLED,
+  GET_GUNUN_MENUSU_REJECTED
 } from "../actions/anaYemek";
 
 const initialState = {
@@ -133,6 +136,22 @@ export default (state = initialState, action) => {
         loading: false
       };
     case ALL_KAHVALTILIK_REJECTED:
+      return {
+        ...state,
+        loading: false
+      };
+    case GET_GUNUN_MENUSU_PENDING:
+      return {
+        loading: true,
+        ...state
+      };
+    case GET_GUNUN_MENUSU_FULFILLED:
+      return {
+        ...state,
+        ...action.payload.data,
+        loading: false
+      };
+    case GET_GUNUN_MENUSU_REJECTED:
       return {
         ...state,
         loading: false
